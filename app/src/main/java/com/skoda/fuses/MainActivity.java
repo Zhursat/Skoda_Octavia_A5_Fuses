@@ -1,11 +1,9 @@
 package com.skoda.fuses;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.webkit.WebChromeClient;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,23 +13,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        try {
-            WebView webView = new WebView(this);
-            setContentView(webView);
+        setContentView(R.layout.activity_main);
 
-            WebSettings settings = webView.getSettings();
-            settings.setJavaScriptEnabled(true);
-            settings.setDomStorageEnabled(true);
-            settings.setAllowFileAccess(true);
-            settings.setAllowContentAccess(true);
+        WebView webView = findViewById(R.id.webview);
 
-            webView.setWebViewClient(new WebViewClient());
-            webView.setWebChromeClient(new WebChromeClient());
+        WebSettings settings = webView.getSettings();
+        settings.setJavaScriptEnabled(true);
+        settings.setDomStorageEnabled(true);
 
-            webView.loadUrl("file:///android_asset/index.html");
-
-        } catch (Exception e) {
-            Log.e("APP_CRASH", "Error loading WebView", e);
-        }
+        webView.setWebViewClient(new WebViewClient());
+        webView.loadUrl("file:///android_asset/index.html");
     }
 }
