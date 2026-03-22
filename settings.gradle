@@ -1,0 +1,2 @@
+rootProject.name = "Skoda_Octavia_A5_Fuses"
+include ':app'
